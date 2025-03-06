@@ -1,0 +1,31 @@
+name: Automatización Actividad 2 - Big Data
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  ejecutar-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Paso 1: Checkout del repositorio
+      - name: Checkout del código
+        uses: actions/checkout@v3
+
+      # Paso 2: Configuración de Python
+      - name: Configuración de Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'  # Cambia a la versión 3.11
+
+      # Paso 3: Instalar dependencias
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas requests openpyxl
+
+      # Paso 4: Ejecutar el script
+      - name: Ejecutar el script de Python
+        run: python automatizacio_bigData.py
